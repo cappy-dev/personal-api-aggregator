@@ -1,0 +1,30 @@
+# Personal API Aggregator Configuration
+# Edit this file to customize your feeds and weather location.
+# Restart the server after changes.
+
+weather:
+  # Open-Meteo: free, no API key needed
+  # Find your lat/lon at https://open-meteo.com/en/docs
+  latitude: 41.88   # Chicago, IL
+  longitude: -87.63
+  timezone: "America/Chicago"
+  name: "Chicago"
+
+rss_feeds:
+  # name: URL to RSS/Atom feed
+  Hacker News:
+    url: "https://news.ycombinator.com/rss"
+    limit: 10
+  Ars Technica:
+    url: "https://feeds.arstechnica.com/arstechnica/index"
+    limit: 5
+  The Verge:
+    url: "https://www.theverge.com/rss/index.xml"
+    limit: 5
+  Krebs on Security:
+    url: "https://krebsonsecurity.com/feed/"
+    limit: 5
+
+cache:
+  # Cache duration in seconds (300 = 5 minutes)
+  ttl: 300

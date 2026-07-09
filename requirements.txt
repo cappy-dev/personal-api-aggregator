@@ -1,0 +1,7 @@
+# Dependencies for the Personal API Aggregator
+# Install with: pip install -r requirements.txt
+fastapi==0.115.6
+uvicorn==0.34.0
+httpx==0.28.1
+feedparser==6.0.11
+pyyaml==6.0.2
