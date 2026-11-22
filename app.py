@@ -85,7 +85,7 @@ async def get_weather():
     daily = data.get("daily", {})
     current_time = current.get("time", "")
 
-    return {
+    result = {
         "location": w["name"],
         "latitude": w["latitude"],
         "longitude": w["longitude"],
@@ -114,6 +114,9 @@ async def get_weather():
             for i in range(min(3, len(daily.get("time", []))))
         ],
     }
+
+    cache.set("weather", result)
+    return result
 
 # === RSS ===
 
@@ -148,6 +151,7 @@ async def get_rss():
 
     loop = asyncio.get_event_loop()
     result = await loop.run_in_executor(None, parse_all_feeds)
+    cache.set("rss", result)
     return result
 
 # === COMBINED ENDPOINT ===
@@ -174,6 +178,7 @@ async def get_all():
         result["rss"] = rss
 
     result["generated_at"] = time.strftime("%Y-%m-%d %H:%M:%S %Z")
+    cache.set("all", result)
     return result
 
 # === FASTAPI APP ===
